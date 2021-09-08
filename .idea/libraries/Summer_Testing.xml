@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Summer Testing">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/build/libs/Summer Testing.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
