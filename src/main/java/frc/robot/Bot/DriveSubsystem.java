@@ -70,7 +70,7 @@ public class DriveSubsystem extends SubsystemBase {
   /**
    * Gets the current wheel speeds.
    *
-   * @return the current wheel speeds in a MecanumDriveWheelSpeeds object.
+   * @return Current wheel speeds in a MecanumDriveWheelSpeeds object.
    */
   public MecanumDriveWheelSpeeds getCurrentWheelSpeeds() {
     return WheelSpeeds.getSpeeds();
@@ -84,7 +84,7 @@ public class DriveSubsystem extends SubsystemBase {
   /**
    * Returns the heading of the robot.
    *
-   * @return the robot's heading in degrees, from -180 to 180
+   * @return Robot's heading in degrees, from -180 to 180
    */
   public double getHeading() {
     return Gyro.getDegrees();
@@ -93,7 +93,7 @@ public class DriveSubsystem extends SubsystemBase {
   /**
    * Returns the turn rate of the robot.
    *
-   * @return The turn rate of the robot, in degrees per second
+   * @return Turn rate of the robot, in degrees per second
    */
   public double getTurnRate() {
     return -Gyro.getRate();
