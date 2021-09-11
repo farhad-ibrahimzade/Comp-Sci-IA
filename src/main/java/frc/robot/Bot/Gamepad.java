@@ -1,6 +1,7 @@
 package frc.robot.Bot;
 
-import edu.wpi.first.wpilibj.Joystick; 
+import edu.wpi.first.wpilibj.Joystick;
+import frc.robot.Vision.Limelight.Limelight; 
 
 public class Gamepad {
 
@@ -31,6 +32,13 @@ public class Gamepad {
     public static void testControl(){
 
     }
+      /**
+   * A method that converts the input from the gamepad to control the robot for limelight testing.
+   *
+   */
+    public static void limelightControl(){
+        Drivetrain.drive(Limelight.getTurnSpeed(), Limelight.getForwardSpeed(), 0);
+    }
      /**
    * A method that converts the input from the gamepad to control the intake of the robot.
    *    
@@ -48,6 +56,11 @@ public class Gamepad {
             Shooter.shoot();
         }
     }
+
+    /**
+    * This function returns the value from the Y axis of the Dpad as a double
+    * @return Value of Dpad Y axis
+     */
     private static double dpadY(){
         int direction = joy1.getPOV(0);
         double dpadYAxisValue;
