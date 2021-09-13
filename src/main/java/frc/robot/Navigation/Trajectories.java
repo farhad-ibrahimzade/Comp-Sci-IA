@@ -12,7 +12,7 @@ import frc.robot.Bot.DriveSubsystem;
 
 public class Trajectories {
 
-        static DriveSubsystem sub = new DriveSubsystem();
+    static DriveSubsystem sub = new DriveSubsystem();
     static TrajectoryConfig config = new TrajectoryConfig(Constants.maxVelo, Constants.maxAccel);
 
     public static void init() {

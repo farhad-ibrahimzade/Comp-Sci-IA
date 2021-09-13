@@ -1,7 +1,7 @@
 package frc.robot.OpMode;
 
 import frc.robot.Bot.Bot;
-import frc.robot.Bot.Drivetrain;
+import frc.robot.Navigation.Trajectories;
 
 public class Main_Auto {
 
@@ -12,7 +12,7 @@ public class Main_Auto {
     }
 
     public static void execute(){
-        Drivetrain.PIDdrive(0.5); //move the robot 5 inches
-
+        //Drivetrain.PIDdrive(0.5); //move the robot 5 inches
+        Trajectories.traj1();
     }
 }
