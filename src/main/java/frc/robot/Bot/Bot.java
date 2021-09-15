@@ -1,6 +1,16 @@
 package frc.robot.Bot;
 
+import frc.robot.Navigation.Encoders;
+import frc.robot.Navigation.Trajectories;
+
 public class Bot {
+    public static void init(){
+
+    }
+    public static void initAuto(){
+        Encoders.init();
+        Trajectories.init();
+    }
     /**
    * A delay method that pauses the execution of the robot code for a set period of time.
    *
