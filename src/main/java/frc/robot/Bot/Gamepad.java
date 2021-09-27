@@ -6,9 +6,6 @@ import frc.robot.Vision.Limelight.Limelight;
 public class Gamepad {
 
     static Joystick joy1 = new Joystick(Constants.port);
-    private static double RX = joy1.getRawAxis(Constants.RX);
-    private static double RY = joy1.getRawAxis(Constants.RY);
-    private static double LX = joy1.getRawAxis(Constants.LX);
 
      /**
    * A method that converts the input from the gamepad to control the robot during the Teleoperated game mode.
