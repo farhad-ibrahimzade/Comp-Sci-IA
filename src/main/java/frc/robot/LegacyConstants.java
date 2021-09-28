@@ -1,8 +1,8 @@
-package frc.robot.Bot;
+package frc.robot;
 
 import edu.wpi.first.wpilibj.util.Units;
 
-public class Constants {
+public class LegacyConstants {
     //drivetrain stuff 
     public static double speed = 0.6; //speed control 
     public static final double driveSpeed = 0.6;
