@@ -14,7 +14,7 @@ public class Intake extends CommandBase {
     }
     @Override
     public void execute() {
-        m_intake.succ(m_speed);
+        m_intake.succ(-m_speed);
     }
     
 }

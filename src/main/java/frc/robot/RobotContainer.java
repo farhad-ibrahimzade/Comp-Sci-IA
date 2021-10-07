@@ -45,7 +45,7 @@ public class RobotContainer {
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
   final NAVXSubsystem navx = new NAVXSubsystem();
   //commands
-  private final FieldOrientedDrive m_FOD = new FieldOrientedDrive(m_drive, () -> m_joystick1.getRawAxis(JoystickConstants.kXStick1), () -> m_joystick1.getRawAxis(JoystickConstants.kYStick1), () -> m_joystick1.getRawAxis(JoystickConstants.kXStick2), () -> navx.getAngle());
+  private final FieldOrientedDrive m_FOD = new FieldOrientedDrive(m_drive, () -> m_joystick1.getRawAxis(JoystickConstants.kXStick2), () -> m_joystick1.getRawAxis(JoystickConstants.kYStick1), () -> m_joystick1.getRawAxis(JoystickConstants.kXStick1), () -> navx.getAngle());
   //chooser
   private SendableChooser<Command> autonomousChooser = new SendableChooser<Command>();
   private SendableChooser<Command> driveChooser = new SendableChooser<Command>();

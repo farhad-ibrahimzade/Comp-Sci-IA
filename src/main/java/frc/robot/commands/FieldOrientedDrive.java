@@ -34,6 +34,6 @@ public class FieldOrientedDrive extends CommandBase {
     }
     @Override
     public void execute() {
-        m_drive.mecanumDriveGyro(m_x.getAsDouble(), m_y.getAsDouble(), m_c.getAsDouble(), m_theta.getAsDouble());
+        m_drive.mecanumDriveGyro(- m_x.getAsDouble(), - m_y.getAsDouble(), m_c.getAsDouble(), m_theta.getAsDouble());
     }
 }
