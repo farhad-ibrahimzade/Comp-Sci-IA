@@ -17,8 +17,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.JoystickConstants;
+import frc.robot.Constants.ShooterConstants;
 import frc.robot.commands.FieldOrientedDrive;
 import frc.robot.commands.Intake;
+import frc.robot.commands.Shooter;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.NAVXSubsystem;
@@ -93,8 +95,8 @@ public class RobotContainer {
       .whenPressed(new Intake(m_intakeSubsystem, IntakeConstants.kIntakeSpeed))
       .whenReleased(new Intake(m_intakeSubsystem, 0));
     
-    //new JoystickButton(m_joystick1, 2)
-    //.whileHeld(new ShootWithIndex(m_shooterSubsystem));
+    new JoystickButton(m_joystick1, 2)
+      .whileHeld(new Shooter(m_shooterSubsystem, ShooterConstants.kIdealShotSpeed));
     
     //new JoystickButton(m_joystick1, 3)
     //.whileHeld(new DriveToTargetLimelight(m_drive, navx));
