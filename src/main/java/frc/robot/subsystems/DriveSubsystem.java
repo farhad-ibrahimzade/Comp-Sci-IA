@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import frc.robot.Constants;
@@ -57,6 +58,10 @@ public class DriveSubsystem extends SubsystemBase {
    */
   public DriveSubsystem() {
     m_drive.setSafetyEnabled(false);
+    m_frontLeftMotor.setIdleMode(IdleMode.kBrake);
+    m_frontRightMotor.setIdleMode(IdleMode.kBrake);
+    m_backLeftMotor.setIdleMode(IdleMode.kBrake);
+    m_backRightMotor.setIdleMode(IdleMode.kBrake);
   }
 
   /**
