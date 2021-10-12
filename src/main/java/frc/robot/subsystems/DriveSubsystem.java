@@ -33,11 +33,6 @@ public class DriveSubsystem extends SubsystemBase {
   private static CANEncoder m_backLeftEncoder = m_backLeftMotor.getEncoder();
   private static CANEncoder m_backRightEncoder = m_backRightMotor.getEncoder();
     
-  public static Translation2d m_frontLeft = new Translation2d(DriveConstants.frontLeftWheelX, DriveConstants.frontLeftWheelY);
-  public static Translation2d m_frontRight = new Translation2d(DriveConstants.frontRightWheelX, DriveConstants.frontRightWheelY);
-  public static Translation2d m_backLeft = new Translation2d(DriveConstants.backLeftWheelX, DriveConstants.backLeftWheelY);
-  public static Translation2d m_backRight = new Translation2d(DriveConstants.backRightWheelX, DriveConstants.backRightWheelY);
-
   private static PIDController xController = new PIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD);
   private static PIDController yController = new PIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD);
 
@@ -46,9 +41,9 @@ public class DriveSubsystem extends SubsystemBase {
 
   private final NAVXSubsystem m_gyro = new NAVXSubsystem();
 
-  private static SimpleMotorFeedforward feedForward = new SimpleMotorFeedforward(Constants.ks, Constants.kv, Constants.ka);
+  private static SimpleMotorFeedforward feedForward = DriveConstants.kFeedforward;
   
-  private final MecanumDriveKinematics m_kinematics = new MecanumDriveKinematics(m_frontLeft, m_frontRight, m_backLeft, m_backRight);
+  private final MecanumDriveKinematics m_kinematics = DriveConstants.kDriveKinematics;
    // Odometry class for tracking robot pose
    private final MecanumDriveOdometry m_odometry = new MecanumDriveOdometry(m_kinematics, m_gyro.getRotation2d());
 
@@ -90,7 +85,7 @@ public class DriveSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // Update the odometry in the periodic block
-    m_odometry.update(m_gyro.getRotation2d(), getWheelSpeeds());
+    m_odometry.update(m_gyro.getRotation2d(), getCurrentWheelSpeeds());
   }
 
   /**
@@ -107,7 +102,7 @@ public class DriveSubsystem extends SubsystemBase {
    *
    * @return The current wheel speeds.
    */
-  public MecanumDriveWheelSpeeds getWheelSpeeds() {
+  public MecanumDriveWheelSpeeds getCurrentWheelSpeeds() {
     return new MecanumDriveWheelSpeeds(m_frontLeftEncoder.getVelocity(), m_frontRightEncoder.getVelocity(), m_backLeftEncoder.getVelocity(), m_backRightEncoder.getVelocity());
   }
 
@@ -127,7 +122,7 @@ public class DriveSubsystem extends SubsystemBase {
    * @param leftVolts  the commanded left output
    * @param rightVolts the commanded right output
    */
-  public static void MecanumDriveVolts(MecanumDriveMotorVoltages volts){
+  public void setDriveMotorControllersVolts(MecanumDriveMotorVoltages volts){
     m_frontLeftMotor.setVoltage(volts.frontLeftVoltage);
     m_frontRightMotor.setVoltage(volts.frontRightVoltage);
     m_backLeftMotor.setVoltage(volts.rearLeftVoltage);

@@ -21,6 +21,7 @@ import frc.robot.Constants.ShooterConstants;
 import frc.robot.commands.FieldOrientedDrive;
 import frc.robot.commands.Intake;
 import frc.robot.commands.Shooter;
+import frc.robot.commands.TrajectoryCommand;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.NAVXSubsystem;
@@ -64,7 +65,7 @@ public class RobotContainer {
    */
   public RobotContainer() {
     //sets up our auto chooser(see the classes for details)
-    //autonomousChooser.setDefaultOption("Drive Forward", new DriveForwardTime(1, -0.3, m_drive));
+    autonomousChooser.setDefaultOption("Trajectory", new TrajectoryCommand());
     //autonomousChooser.addOption("Shoot Left Of Target", a_autoDriveToLineAndShootLeft);
     //sets up drive chooser with the option between FOD and default
     driveChooser.setDefaultOption("Field Oriented Drive", m_FOD);
