@@ -1,16 +1,11 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.controller.PIDController;
-import edu.wpi.first.wpilibj.controller.ProfiledPIDController;
-import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.geometry.Pose2d;
-import edu.wpi.first.wpilibj.geometry.Translation2d;
 import edu.wpi.first.wpilibj.kinematics.MecanumDriveKinematics;
 import edu.wpi.first.wpilibj.kinematics.MecanumDriveMotorVoltages;
 import edu.wpi.first.wpilibj.kinematics.MecanumDriveOdometry;
 import edu.wpi.first.wpilibj.kinematics.MecanumDriveWheelSpeeds;
-import edu.wpi.first.wpilibj.trajectory.TrapezoidProfile.Constraints;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.revrobotics.CANEncoder;
@@ -18,7 +13,6 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import frc.robot.Constants;
 import frc.robot.Constants.DriveConstants;
 
 public class DriveSubsystem extends SubsystemBase {
@@ -33,15 +27,15 @@ public class DriveSubsystem extends SubsystemBase {
   private static CANEncoder m_backLeftEncoder = m_backLeftMotor.getEncoder();
   private static CANEncoder m_backRightEncoder = m_backRightMotor.getEncoder();
     
-  private static PIDController xController = new PIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD);
-  private static PIDController yController = new PIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD);
+  //private static PIDController xController = new PIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD);
+  //private static PIDController yController = new PIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD);
 
-  private static Constraints constraints = new Constraints(Constants.maxVelo,Constants.maxAccel);
-  private static ProfiledPIDController tController = new ProfiledPIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD, constraints);
+  //private static Constraints constraints = new Constraints(Constants.maxVelo,Constants.maxAccel);
+  //private static ProfiledPIDController tController = new ProfiledPIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD, constraints);
 
   private final NAVXSubsystem m_gyro = new NAVXSubsystem();
 
-  private static SimpleMotorFeedforward feedForward = DriveConstants.kFeedforward;
+  //private static SimpleMotorFeedforward feedForward = DriveConstants.kFeedforward;
   
   private final MecanumDriveKinematics m_kinematics = DriveConstants.kDriveKinematics;
    // Odometry class for tracking robot pose

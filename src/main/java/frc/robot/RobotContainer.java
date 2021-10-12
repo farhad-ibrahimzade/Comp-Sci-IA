@@ -27,7 +27,6 @@ import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.NAVXSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 
