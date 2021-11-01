@@ -210,4 +210,8 @@ public class DriveSubsystem extends SubsystemBase {
   public double getTurnRate() {
     return -m_gyro.getRate();
   }
+
+  public void speedLimit(double limit){
+    DriveConstants.speed = limit;
+  }
 }

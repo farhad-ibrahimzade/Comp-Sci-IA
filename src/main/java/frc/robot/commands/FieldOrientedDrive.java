@@ -5,6 +5,7 @@ import java.util.function.DoubleSupplier;
 
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.DriveConstants;
 import frc.robot.subsystems.DriveSubsystem;
 
 /**
@@ -34,6 +35,6 @@ public class FieldOrientedDrive extends CommandBase {
     }
     @Override
     public void execute() {
-        m_drive.mecanumDriveGyro(- m_x.getAsDouble() * 0.5, - m_y.getAsDouble() * 0.5, m_c.getAsDouble() * 0.5, m_theta.getAsDouble());
+        m_drive.mecanumDriveGyro(- m_x.getAsDouble() * 0.5 * DriveConstants.speed, - m_y.getAsDouble() * 0.5 * DriveConstants.speed, m_c.getAsDouble() * 0.5 * DriveConstants.speed, m_theta.getAsDouble());
     }
 }

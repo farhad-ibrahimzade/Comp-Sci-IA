@@ -9,7 +9,7 @@ import frc.robot.Constants.ShooterConstants;
 
 public class ShooterSubsystem extends SubsystemBase {
     private CANSparkMax m_shooter = new CANSparkMax(ShooterConstants.kShooter1Port, MotorType.kBrushless);
-    //private WPI_TalonSRX m_shooter2 = new WPI_TalonSRX(ShooterConstants.kShooter2Port);
+    //private CANSparkMax m_shooter2 = new CANSparkMax(ShooterConstants.kShooter2Port, MotorType.kBrushless);
     private Servo m_index = new Servo(ShooterConstants.kIndexPort);
 
     /**

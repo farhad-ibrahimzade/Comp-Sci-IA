@@ -16,7 +16,7 @@ public class Constants {
         public static final int kBackRightWheelPort = 5;
 
         //drivetrain stuff TODO: CALIBRATE
-        public static double speed = 0.6; //speed control 
+        public static double speed = 1; //speed control 
 
         //PID stuff
         public static double kP = 0.001;

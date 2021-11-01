@@ -19,8 +19,9 @@ import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.JoystickConstants;
 import frc.robot.Constants.ShooterConstants;
 import frc.robot.commands.FieldOrientedDrive;
-import frc.robot.commands.Intake;
-import frc.robot.commands.Shooter;
+import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.ShooterCommand;
+import frc.robot.commands.SpeedLimit;
 import frc.robot.commands.TrajectoryCommand;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -48,6 +49,11 @@ public class RobotContainer {
   final NAVXSubsystem navx = new NAVXSubsystem();
   //commands
   private final FieldOrientedDrive m_FOD = new FieldOrientedDrive(m_drive, () -> m_joystick1.getRawAxis(JoystickConstants.kXStick2), () -> m_joystick1.getRawAxis(JoystickConstants.kYStick1), () -> m_joystick1.getRawAxis(JoystickConstants.kXStick1), () -> navx.getAngle());
+  private final SpeedLimit m_limit = new SpeedLimit(m_drive, true);
+  private final SpeedLimit m_nolimit = new SpeedLimit(m_drive, false);
+  private final IntakeCommand m_runIntake = new IntakeCommand(m_intakeSubsystem, IntakeConstants.kIntakeSpeed);
+  private final IntakeCommand m_stopIntake = new IntakeCommand(m_intakeSubsystem, 0);
+  private final ShooterCommand m_runShooter = new ShooterCommand(m_shooterSubsystem, ShooterConstants.kIdealShotSpeed);
   //chooser
   private SendableChooser<Command> autonomousChooser = new SendableChooser<Command>();
   private SendableChooser<Command> driveChooser = new SendableChooser<Command>();
@@ -92,15 +98,15 @@ public class RobotContainer {
   private void configureButtonBindings() {
 
     new JoystickButton(m_joystick1, 1)
-      .whenPressed(new Intake(m_intakeSubsystem, IntakeConstants.kIntakeSpeed))
-      .whenReleased(new Intake(m_intakeSubsystem, 0));
+      .whenPressed(m_runIntake)
+      .whenReleased(m_stopIntake);
     
     new JoystickButton(m_joystick1, 2)
-      .whileHeld(new Shooter(m_shooterSubsystem, ShooterConstants.kIdealShotSpeed));
+      .whileHeld(m_runShooter);
     
-    //new JoystickButton(m_joystick1, 3)
-    //.whileHeld(new DriveToTargetLimelight(m_drive, navx));
-
+    new JoystickButton(m_joystick1, 4)
+      .whileHeld(m_limit)
+      .whenReleased(m_nolimit);
     //new JoystickButton(m_joystick1, 4)
     //.whileHeld(new SequentialCommandGroup(
     //  new DriveToTargetLimelight(m_drive, navx),
