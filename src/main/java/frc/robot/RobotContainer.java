@@ -54,6 +54,7 @@ public class RobotContainer {
   private final IntakeCommand m_runIntake = new IntakeCommand(m_intakeSubsystem, IntakeConstants.kIntakeSpeed);
   private final IntakeCommand m_stopIntake = new IntakeCommand(m_intakeSubsystem, 0);
   private final ShooterCommand m_runShooter = new ShooterCommand(m_shooterSubsystem, ShooterConstants.kIdealShotSpeed);
+  private final ShooterCommand m_stopShooter = new ShooterCommand(m_shooterSubsystem, 0);
   //chooser
   private SendableChooser<Command> autonomousChooser = new SendableChooser<Command>();
   private SendableChooser<Command> driveChooser = new SendableChooser<Command>();
@@ -102,11 +103,12 @@ public class RobotContainer {
       .whenReleased(m_stopIntake);
     
     new JoystickButton(m_joystick1, 2)
-      .whileHeld(m_runShooter);
+      .whileHeld(m_runShooter)
+      .whenReleased(m_stopShooter);
     
-    new JoystickButton(m_joystick1, 4)
+    new JoystickButton(m_joystick1, 6)
       .whileHeld(m_limit)
-      .whenReleased(m_nolimit);
+      .whenReleased(m_nolimit); 
     //new JoystickButton(m_joystick1, 4)
     //.whileHeld(new SequentialCommandGroup(
     //  new DriveToTargetLimelight(m_drive, navx),

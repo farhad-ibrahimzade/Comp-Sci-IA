@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ShooterSubsystem;
 
 public class ShooterCommand extends CommandBase {
-    ShooterSubsystem m_shooter = new ShooterSubsystem();
+    ShooterSubsystem m_shooter;
     private final double m_speed;
 
     public ShooterCommand(ShooterSubsystem shooter, double speed) {

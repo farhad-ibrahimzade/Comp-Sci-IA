@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveSubsystem;
 
 public class SpeedLimit extends CommandBase {
-    private DriveSubsystem m_drive = new DriveSubsystem();
+    private DriveSubsystem m_drive;
 
     private boolean m_status = false;
 
