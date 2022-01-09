@@ -22,9 +22,9 @@ public class Constants {
         public static double kI = 0;
         public static double kD = 0;
 
-        public static double ks = 1;
-        public static double kv = 0.8;
-        public static double ka = 0.15;
+        public static double ks = 0.174;
+        public static double kv = 2.64;
+        public static double ka = 0.0997;
         public static final double kTrackWidth = 0.53; //20.5 - 21 in
         // Distance between centers of right and left wheels on robot
         public static final double kWheelBase = 0.52; //20.25-20.5 in
