@@ -62,6 +62,12 @@ public class Constants {
 
         public static final double kIdealShotSpeed = 0.4; //ideal motor speed to run the shooter at
         public static final double kTimeToChargeUp = 4; //time in seconds for the shooter to reach ideal speed
+
+        public static final double shooterSpeed = 100;
+
+        public static final double kP = 0;
+        public static final double kI = 0;
+        public static final double kD = 0;
     }
     public static final class JoystickConstants {
         public static final int kXStick1 = 0;
