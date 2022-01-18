@@ -20,7 +20,7 @@ public class ShooterCommand extends CommandBase{
 
       while(!pid.atSetpoint()){
 
-          m_shooter.shoot(pid.calculate(ShooterSubsystem.getVelocity(), ShooterConstants.shooterSpeed));
+          m_shooter.shoot(pid.calculate(m_shooter.getVelocity(), ShooterConstants.shooterSpeed));
 
       }
 

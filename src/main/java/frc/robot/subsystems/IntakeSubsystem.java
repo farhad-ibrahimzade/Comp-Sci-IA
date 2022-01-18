@@ -8,6 +8,7 @@ import frc.robot.Constants.IntakeConstants;
 public class IntakeSubsystem extends SubsystemBase {
     private  CANSparkMax m_intake = new CANSparkMax(IntakeConstants.kIntakePort, MotorType.kBrushed);
 
+    private int count = 0;
     /**
      * this is the class for the intake
      * thats it its really simple
@@ -22,5 +23,9 @@ public class IntakeSubsystem extends SubsystemBase {
      */
     public void succ(double speed) {
         m_intake.set(speed);
+    }
+
+    public int getCount(){
+        return count;
     }
 }

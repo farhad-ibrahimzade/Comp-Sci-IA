@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterConstants;
 
 public class ShooterSubsystem extends SubsystemBase {
-    private static CANSparkMax m_shooter = new CANSparkMax(ShooterConstants.kShooter1Port, MotorType.kBrushless);
-    private static CANEncoder shooterEncoder = m_shooter.getEncoder();
+    private CANSparkMax m_shooter = new CANSparkMax(ShooterConstants.kShooter1Port, MotorType.kBrushless);
+    private CANEncoder shooterEncoder = m_shooter.getEncoder();
     // private CANSparkMax m_shooter2 = new
     // CANSparkMax(ShooterConstants.kShooter2Port, MotorType.kBrushless);
     private Servo m_index = new Servo(ShooterConstants.kIndexPort);
@@ -39,7 +39,7 @@ public class ShooterSubsystem extends SubsystemBase {
         m_index.set(position);
     }
 
-    public static double getVelocity() {
+    public double getVelocity() {
         return shooterEncoder.getVelocity();
     }
 }
