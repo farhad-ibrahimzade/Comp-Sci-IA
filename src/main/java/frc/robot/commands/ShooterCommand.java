@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.controller.PIDController;
 public class ShooterCommand extends CommandBase{
     ShooterSubsystem m_shooter;
     private final double m_speed;
+    
     PIDController pid = new PIDController(ShooterConstants.kP, ShooterConstants.kI, ShooterConstants.kD);
 
     public ShooterCommand(ShooterSubsystem shooter, double speed) {
