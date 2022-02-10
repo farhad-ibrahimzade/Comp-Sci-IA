@@ -6,17 +6,17 @@ import frc.robot.Constants.SonarConstants;
 
 public class SonarSubsystem extends SubsystemBase{
 
-    private Ultrasonic sonar = new Ultrasonic(SonarConstants.sonar1, SonarConstants.sonar2);
+    private static Ultrasonic sonar = new Ultrasonic(SonarConstants.sonar1, SonarConstants.sonar2);
 
     public SonarSubsystem() {
         Ultrasonic.setAutomaticMode(true);
     }
 
-    public double getInches(){
+    public static double getInches(){
         return sonar.getRangeInches();
     }
 
-    public double getMM(){
+    public static double getMM(){
         return sonar.getRangeMM();
     }
 }

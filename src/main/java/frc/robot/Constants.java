@@ -53,19 +53,19 @@ public class Constants {
     }
 
     public static final class ShooterConstants {
-        public static final int kShooter1Port = 7;
-        public static final int kShooter2Port = 6;
+        public static final int kShooter1Port = 1;
+        public static final int kShooter2Port = 7;
         public static final int kIndexPort = 0;
 
         public static final double kIndexClosedPosition = 0.5;
         public static final double kIndexOpenPosition = 0.35;
 
-        public static final double kIdealShotSpeed = 0.4; //ideal motor speed to run the shooter at
+        public static final double kIdealShotSpeed = 0.8; //ideal motor speed to run the shooter at
         public static final double kTimeToChargeUp = 4; //time in seconds for the shooter to reach ideal speed
 
         public static final double shooterSpeed = 100;
 
-        public static final double kP = 0;
+        public static final double kP = 0.1;
         public static final double kI = 0;
         public static final double kD = 0;
     }

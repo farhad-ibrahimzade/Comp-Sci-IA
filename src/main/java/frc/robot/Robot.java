@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.ShooterSubsystem;
 
 
 /**
@@ -109,6 +110,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     SmartDashboard.putNumber("navx", m_robotContainer.navx.getAngle());
+    //ShooterSubsystem.updatePid();
   }
 
   @Override
@@ -123,4 +125,17 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
   }
+
+  public static void wait(int ms)
+    {
+        try
+        {
+            Thread.sleep(ms); //core java delay command
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt(); //this exception is useful to remove the glitches and errors of the thread.sleep()
+        }
+    }
+
 }
