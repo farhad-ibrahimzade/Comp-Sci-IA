@@ -106,9 +106,9 @@ public class RobotContainer {
       .whileHeld(m_runShooter)
       .whenReleased(m_stopShooter);
     
-    new JoystickButton(m_joystick1, 6)
-      .whileHeld(m_limit)
-      .whenReleased(m_nolimit); 
+    //new JoystickButton(m_joystick1, 6)
+    //  .whileHeld(m_limit)
+    //  .whenReleased(m_nolimit); 
     //new JoystickButton(m_joystick1, 4)
     //.whileHeld(new SequentialCommandGroup(
     //  new DriveToTargetLimelight(m_drive, navx),

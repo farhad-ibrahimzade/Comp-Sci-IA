@@ -57,15 +57,15 @@ public class Limelight {
      */
     public static double getForwardSpeed() {
       if(hasTarget()){
-      // try to drive forward until the target area reaches our desired area
-      double forwardSpeed = (DESIRED_TARGET_AREA - getTA()) * DRIVE_K;
+        // try to drive forward until the target area reaches our desired area
+        double forwardSpeed = (DESIRED_TARGET_AREA - getTA()) * DRIVE_K;
 
-      // don't let the robot drive too fast into the goal
-      if (forwardSpeed > MAX_DRIVE)
-      {
-        forwardSpeed = MAX_DRIVE;
-      }
-      return -forwardSpeed;
+        // don't let the robot drive too fast into the goal
+        if (forwardSpeed > MAX_DRIVE)
+        {
+          forwardSpeed = MAX_DRIVE;
+        }
+        return -forwardSpeed;
       }
       return 0;
     }
