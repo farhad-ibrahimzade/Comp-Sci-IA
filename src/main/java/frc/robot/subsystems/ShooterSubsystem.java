@@ -1,6 +1,6 @@
 package frc.robot.subsystems;
 
-import com.revrobotics.CANEncoder;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.Servo;
@@ -11,7 +11,7 @@ import frc.robot.Constants.ShooterConstants;
 
 public class ShooterSubsystem extends SubsystemBase {
     private static CANSparkMax m_shooter = new CANSparkMax(ShooterConstants.kShooter1Port, MotorType.kBrushed);
-    private static CANEncoder shooterEncoder = m_shooter.getEncoder();
+    private static RelativeEncoder shooterEncoder = m_shooter.getEncoder();
     //private CANSparkMax m_shooter2 = new CANSparkMax(ShooterConstants.kShooter2Port, MotorType.kBrushless);
     private Servo m_index = new Servo(ShooterConstants.kIndexPort);
     static PIDController pid = new PIDController(ShooterConstants.kP, ShooterConstants.kI, ShooterConstants.kD);
@@ -38,6 +38,11 @@ public class ShooterSubsystem extends SubsystemBase {
         m_shooter.set(pid.calculate(getVelocity()));
     }
 
+    public void speedUp(){
+        while(!pid.atSetpoint()){
+            updatePid();
+        }
+    }
     /**
      * 
      * @param position = position for index servo to be at

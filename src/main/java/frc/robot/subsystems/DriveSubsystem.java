@@ -8,7 +8,7 @@ import edu.wpi.first.math.kinematics.MecanumDriveOdometry;
 import edu.wpi.first.math.kinematics.MecanumDriveWheelSpeeds;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-import com.revrobotics.CANEncoder;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -22,10 +22,10 @@ public class DriveSubsystem extends SubsystemBase {
   public static CANSparkMax m_backLeftMotor = new CANSparkMax(DriveConstants.kBackLeftWheelPort, MotorType.kBrushless);
   public static CANSparkMax m_backRightMotor = new CANSparkMax(DriveConstants.kBackRightWheelPort, MotorType.kBrushless);
   
-  private static CANEncoder m_frontLeftEncoder = m_frontLeftMotor.getEncoder();
-  private static CANEncoder m_frontRightEncoder = m_frontRightMotor.getEncoder();
-  private static CANEncoder m_backLeftEncoder = m_backLeftMotor.getEncoder();
-  private static CANEncoder m_backRightEncoder = m_backRightMotor.getEncoder();
+  private static RelativeEncoder m_frontLeftEncoder = m_frontLeftMotor.getEncoder();
+  private static RelativeEncoder m_frontRightEncoder = m_frontRightMotor.getEncoder();
+  private static RelativeEncoder m_backLeftEncoder = m_backLeftMotor.getEncoder();
+  private static RelativeEncoder m_backRightEncoder = m_backRightMotor.getEncoder();
     
   //private static PIDController xController = new PIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD);
   //private static PIDController yController = new PIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD);
@@ -147,7 +147,7 @@ public class DriveSubsystem extends SubsystemBase {
    *
    * @return the left drive encoder
    */
-  public CANEncoder getFrontLeftEncoder() {
+  public RelativeEncoder getFrontLeftEncoder() {
     return m_frontLeftEncoder;
   }
 
@@ -156,7 +156,7 @@ public class DriveSubsystem extends SubsystemBase {
    *
    * @return the right drive encoder
    */
-  public CANEncoder getFrontRightEncoder() {
+  public RelativeEncoder getFrontRightEncoder() {
     return m_frontRightEncoder;
   }
   /**
@@ -164,7 +164,7 @@ public class DriveSubsystem extends SubsystemBase {
    *
    * @return the left drive encoder
    */
-  public CANEncoder getBackLeftEncoder() {
+  public RelativeEncoder getBackLeftEncoder() {
     return m_backLeftEncoder;
   }
 
@@ -173,7 +173,7 @@ public class DriveSubsystem extends SubsystemBase {
    *
    * @return the right drive encoder
    */
-  public CANEncoder getBackRightEncoder() {
+  public RelativeEncoder getBackRightEncoder() {
     return m_backRightEncoder;
   }
 
