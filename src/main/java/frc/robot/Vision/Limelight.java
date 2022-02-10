@@ -1,4 +1,4 @@
-package frc.robot.Vision.Limelight;
+package frc.robot.Vision;
 
 import edu.wpi.first.networktables.NetworkTableInstance;
 

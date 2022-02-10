@@ -1,5 +1,6 @@
 package frc.robot.commands;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 import frc.robot.Constants.ShooterConstants;
@@ -10,10 +11,7 @@ public class ShooterCommand extends CommandBase{
     ShooterSubsystem m_shooter;
     private final double m_speed;
     
-<<<<<<< Updated upstream
     PIDController pid = new PIDController(ShooterConstants.kP, ShooterConstants.kI, ShooterConstants.kD);
-=======
->>>>>>> Stashed changes
 
     public ShooterCommand(ShooterSubsystem shooter, double speed) {
         m_shooter = shooter;
