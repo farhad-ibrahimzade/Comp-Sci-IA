@@ -90,7 +90,7 @@ public class RobotContainer {
     m_drive.setDefaultCommand(driveChooser.getSelected());
 
     //guess
-    SmartDashboard.putNumber("navx", navx.getAngle());
+    SmartDashboard.putNumber("NAVX Angle", navx.getAngle());
     
     }
 

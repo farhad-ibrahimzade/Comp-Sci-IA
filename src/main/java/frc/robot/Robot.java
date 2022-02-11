@@ -114,7 +114,6 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Detect element?", m_robotContainer.m_sonar.getInches());
     SmartDashboard.putNumber("Element X", m_robotContainer.m_camera.getTX());
     SmartDashboard.putNumber("Element Y", m_robotContainer.m_camera.getTY());
-    //ShooterSubsystem.updatePid();
   }
 
   @Override
