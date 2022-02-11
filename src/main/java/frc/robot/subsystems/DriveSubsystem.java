@@ -1,6 +1,8 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.MecanumDriveKinematics;
 import edu.wpi.first.math.kinematics.MecanumDriveMotorVoltages;
@@ -35,6 +37,8 @@ public class DriveSubsystem extends SubsystemBase {
 
   private final NAVXSubsystem m_gyro = new NAVXSubsystem();
 
+  private final Field2d m_field = new Field2d();
+
   //private static SimpleMotorFeedforward feedForward = DriveConstants.kFeedforward;
   
   private final MecanumDriveKinematics m_kinematics = DriveConstants.kDriveKinematics;
@@ -51,6 +55,8 @@ public class DriveSubsystem extends SubsystemBase {
     m_frontRightMotor.setIdleMode(IdleMode.kBrake);
     m_backLeftMotor.setIdleMode(IdleMode.kBrake);
     m_backRightMotor.setIdleMode(IdleMode.kBrake);
+
+    SmartDashboard.putData("Field", m_field);
   }
 
   /**
@@ -80,6 +86,7 @@ public class DriveSubsystem extends SubsystemBase {
   public void periodic() {
     // Update the odometry in the periodic block
     m_odometry.update(m_gyro.getRotation2d(), getCurrentWheelSpeeds());
+    m_field.setRobotPose(m_odometry.getPoseMeters());
   }
 
   /**
