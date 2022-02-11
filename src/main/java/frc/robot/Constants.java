@@ -97,7 +97,7 @@ public class Constants {
 
     public static final class SonarConstants{
         public static final int sonar1 = 0;
-        public static final int sonar2 = 0;
+        public static final int sonar2 = 1;
     }
     public static final class AutoConstants {
         public static final double kAutoShootPower = -0.9;
