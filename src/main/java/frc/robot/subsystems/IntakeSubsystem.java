@@ -10,6 +10,7 @@ import frc.robot.Constants.IntakeConstants;
 public class IntakeSubsystem extends SubsystemBase {
     private  CANSparkMax m_intake = new CANSparkMax(IntakeConstants.kIntakePort, MotorType.kBrushed);
 
+    private SonarSubsystem m_sonar;
     private static int count = 0;
     /**
      * this is the class for the intake
@@ -39,13 +40,13 @@ public class IntakeSubsystem extends SubsystemBase {
 
     public boolean pickedUp(){
         //add code to notify that element picked up
-        return SonarSubsystem.getInches() < 10;
+        return m_sonar.getInches() < 10;
     }
     public int getCount(){
         return count;
     }
 
-    public static void shotOne(){
+    public void shotOne(){
         count--;
     }
 }

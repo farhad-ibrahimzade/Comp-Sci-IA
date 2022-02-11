@@ -12,11 +12,11 @@ public class SonarSubsystem extends SubsystemBase{
         Ultrasonic.setAutomaticMode(true);
     }
 
-    public static double getInches(){
+    public double getInches(){
         return sonar.getRangeInches();
     }
 
-    public static double getMM(){
+    public double getMM(){
         return sonar.getRangeMM();
     }
 }

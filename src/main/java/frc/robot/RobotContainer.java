@@ -20,14 +20,17 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.JoystickConstants;
 import frc.robot.Constants.ShooterConstants;
+import frc.robot.commands.AlignToGoal;
 import frc.robot.commands.FieldOrientedDrive;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShooterCommand;
 import frc.robot.commands.TrajectoryCommand;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.NAVXSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.SonarSubsystem;
 
 
 /**
@@ -43,16 +46,19 @@ public class RobotContainer {
   
   //subsystems
   private final DriveSubsystem m_drive = new DriveSubsystem();
-  private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
-  private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
+  private final IntakeSubsystem m_intake = new IntakeSubsystem();
+  final ShooterSubsystem m_shooter = new ShooterSubsystem();
+  final LimelightSubsystem m_camera = new LimelightSubsystem();
+  final SonarSubsystem m_sonar = new SonarSubsystem();
   final NAVXSubsystem navx = new NAVXSubsystem();
   //commands
   private final FieldOrientedDrive m_FOD = new FieldOrientedDrive(m_drive, () -> m_joystick1.getRawAxis(JoystickConstants.kXStick2), () -> m_joystick1.getRawAxis(JoystickConstants.kYStick1), () -> m_joystick1.getRawAxis(JoystickConstants.kXStick1), () -> navx.getAngle());
   
-  private final IntakeCommand m_runIntake = new IntakeCommand(m_intakeSubsystem, IntakeConstants.kIntakeSpeed);
-  private final IntakeCommand m_stopIntake = new IntakeCommand(m_intakeSubsystem, 0);
-  private final ShooterCommand m_runShooter = new ShooterCommand(m_shooterSubsystem, ShooterConstants.kIdealShotSpeed);
-  private final ShooterCommand m_stopShooter = new ShooterCommand(m_shooterSubsystem, 0);
+  private final AlignToGoal m_alignToGoal = new AlignToGoal(m_drive, m_camera);
+  private final IntakeCommand m_runIntake = new IntakeCommand(m_intake, IntakeConstants.kIntakeSpeed);
+  private final IntakeCommand m_stopIntake = new IntakeCommand(m_intake, 0);
+  private final ShooterCommand m_runShooter = new ShooterCommand(m_shooter, m_intake, m_camera, ShooterConstants.kIdealShotSpeed);
+  private final ShooterCommand m_stopShooter = new ShooterCommand(m_shooter, m_intake, m_camera, 0);
   //chooser
   private SendableChooser<Command> autonomousChooser = new SendableChooser<Command>();
   private SendableChooser<Command> driveChooser = new SendableChooser<Command>();
@@ -106,6 +112,8 @@ public class RobotContainer {
     new JoystickButton(m_joystick1, 3)
       .whenPressed(m_stopShooter);
     
+    new JoystickButton(m_joystick1, 4)
+      .whenPressed(m_alignToGoal); 
     
   }
 

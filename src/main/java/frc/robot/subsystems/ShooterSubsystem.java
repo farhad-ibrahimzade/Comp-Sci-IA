@@ -34,8 +34,8 @@ public class ShooterSubsystem extends SubsystemBase {
         m_shooter.set(speed);
     }
 
-    public static void updatePid() {
-        m_shooter.set(pid.calculate(getVelocity()));
+    public void updatePid() {
+        m_shooter.set(pid.calculate(this.getVelocity()));
     }
 
     public void speedUp(){
@@ -51,7 +51,7 @@ public class ShooterSubsystem extends SubsystemBase {
         m_index.set(position);
     }
 
-    public static double getVelocity() {
+    public double getVelocity() {
         return shooterEncoder.getVelocity();
     }
 }

@@ -88,6 +88,11 @@ public class Constants {
         public static final double kAreaRangeValue = 0.3;
 
         public static final double kP = 0.005;
+
+        public final static double STEER_K = 0.01; // how hard to turn toward the target
+        public final static double DRIVE_K = 0.1; // how hard to drive fwd toward the target
+        public final static double DESIRED_TARGET_AREA = 13.0; // Area of the target when the robot reaches the wall
+        public final static double MAX_DRIVE = 0.6; // Simple speed limit so we don't drive too fast
     }
 
     public static final class SonarConstants{
@@ -114,4 +119,6 @@ public class Constants {
             new TrapezoidProfile.Constraints(
                 kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
       }
+
+    
 }
