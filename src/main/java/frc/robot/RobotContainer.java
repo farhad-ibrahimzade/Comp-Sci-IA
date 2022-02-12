@@ -28,7 +28,6 @@ import frc.robot.commands.TrajectoryCommand;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
-import frc.robot.subsystems.NAVXSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
 /**
@@ -43,13 +42,12 @@ public class RobotContainer {
   Joystick m_joystick2 = new Joystick(JoystickConstants.kJoystick2Port);
   
   //subsystems
-  private final DriveSubsystem m_drive = new DriveSubsystem();
+  final DriveSubsystem m_drive = new DriveSubsystem();
   final IntakeSubsystem m_intake = new IntakeSubsystem();
   final ShooterSubsystem m_shooter = new ShooterSubsystem();
   final LimelightSubsystem m_camera = new LimelightSubsystem();
-  final NAVXSubsystem navx = new NAVXSubsystem();
   //commands
-  private final FieldOrientedDrive m_FOD = new FieldOrientedDrive(m_drive, () -> m_joystick1.getRawAxis(JoystickConstants.kXStick1), () -> m_joystick1.getRawAxis(JoystickConstants.kYStick2), () -> m_joystick1.getRawAxis(JoystickConstants.kXStick2), () -> navx.getAngle());
+  private final FieldOrientedDrive m_FOD = new FieldOrientedDrive(m_drive, () -> m_joystick1.getRawAxis(JoystickConstants.kXStick1), () -> m_joystick1.getRawAxis(JoystickConstants.kYStick2), () -> m_joystick1.getRawAxis(JoystickConstants.kXStick2), () -> m_drive.getHeading());
   
   private final AlignToGoal m_alignToGoal = new AlignToGoal(m_drive, m_camera);
   private final IntakeCommand m_runIntake = new IntakeCommand(m_intake, IntakeConstants.kIntakeSpeed);
@@ -87,7 +85,7 @@ public class RobotContainer {
     m_drive.setDefaultCommand(driveChooser.getSelected());
 
     //guess
-    SmartDashboard.putNumber("NAVX Angle", navx.getAngle());
+    SmartDashboard.putNumber("NAVX Angle", m_drive.getHeading());
     
     }
 

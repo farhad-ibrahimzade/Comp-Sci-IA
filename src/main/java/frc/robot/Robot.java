@@ -40,7 +40,7 @@ public class Robot extends TimedRobot {
     CameraServer.startAutomaticCapture();
     CameraServer.startAutomaticCapture();
     m_robotContainer = new RobotContainer();
-    m_robotContainer.navx.reset();
+    m_robotContainer.m_drive.resetNavx();
 
   }
 
@@ -108,8 +108,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    SmartDashboard.putNumber("NAVX Angle", m_robotContainer.navx.getAngle());
-    //SmartDashboard.putNumber("Shooter Velocity", m_robotContainer.m_shooter.getVelocity());
+    SmartDashboard.putNumber("NAVX Angle", m_robotContainer.m_drive.getHeading());
+    SmartDashboard.putNumber("Shooter Velocity", m_robotContainer.m_shooter.getVelocity());
     SmartDashboard.putBoolean("Detect goal?", m_robotContainer.m_camera.hasTarget());
     SmartDashboard.putNumber("Element in intake?", m_robotContainer.m_intake.getInches());
     SmartDashboard.putNumber("Element X", m_robotContainer.m_camera.getTX());

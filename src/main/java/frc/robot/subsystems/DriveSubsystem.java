@@ -9,8 +9,10 @@ import edu.wpi.first.math.kinematics.MecanumDriveMotorVoltages;
 import edu.wpi.first.math.kinematics.MecanumDriveOdometry;
 import edu.wpi.first.math.kinematics.MecanumDriveWheelSpeeds;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.SerialPort;
 
 import com.revrobotics.RelativeEncoder;
+import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -35,7 +37,7 @@ public class DriveSubsystem extends SubsystemBase {
   //private static Constraints constraints = new Constraints(Constants.maxVelo,Constants.maxAccel);
   //private static ProfiledPIDController tController = new ProfiledPIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD, constraints);
 
-  private final NAVXSubsystem m_gyro = new NAVXSubsystem();
+  private AHRS navx = new AHRS(SerialPort.Port.kMXP);
 
   private final Field2d m_field = new Field2d();
 
@@ -43,7 +45,7 @@ public class DriveSubsystem extends SubsystemBase {
   
   private final MecanumDriveKinematics m_kinematics = DriveConstants.kDriveKinematics;
    // Odometry class for tracking robot pose
-   private final MecanumDriveOdometry m_odometry = new MecanumDriveOdometry(m_kinematics, m_gyro.getRotation2d());
+   private final MecanumDriveOdometry m_odometry = new MecanumDriveOdometry(m_kinematics, navx.getRotation2d());
 
   private MecanumDrive m_drive = new MecanumDrive(m_frontLeftMotor, m_backLeftMotor, m_frontRightMotor, m_backRightMotor);
   /**
@@ -88,7 +90,7 @@ public class DriveSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // Update the odometry in the periodic block
-    m_odometry.update(m_gyro.getRotation2d(), getCurrentWheelSpeeds());
+    m_odometry.update(navx.getRotation2d(), getCurrentWheelSpeeds());
     m_field.setRobotPose(m_odometry.getPoseMeters());
   }
 
@@ -117,7 +119,7 @@ public class DriveSubsystem extends SubsystemBase {
    */
   public void resetOdometry(Pose2d pose) {
     resetEncoders();
-    m_odometry.resetPosition(pose, m_gyro.getRotation2d());
+    m_odometry.resetPosition(pose, navx.getRotation2d());
   }
   
   /**
@@ -200,7 +202,7 @@ public class DriveSubsystem extends SubsystemBase {
    * Zeroes the heading of the robot.
    */
   public void zeroHeading() {
-    m_gyro.reset();
+    navx.reset();
   }
 
   /**
@@ -209,7 +211,7 @@ public class DriveSubsystem extends SubsystemBase {
    * @return the robot's heading in degrees, from -180 to 180
    */
   public double getHeading() {
-    return m_gyro.getAngle();
+    return navx.getAngle();
   }
 
   /**
@@ -218,10 +220,14 @@ public class DriveSubsystem extends SubsystemBase {
    * @return The turn rate of the robot, in degrees per second
    */
   public double getTurnRate() {
-    return -m_gyro.getRate();
+    return -navx.getRate();
   }
 
   public void speedLimit(double limit){
     DriveConstants.speed = limit;
+  }
+
+  public void resetNavx() {
+    navx.reset();
   }
 }
