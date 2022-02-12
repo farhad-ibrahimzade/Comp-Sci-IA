@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Robot;
 import frc.robot.subsystems.IntakeSubsystem;
 
 public class IntakeCommand extends CommandBase {
@@ -14,7 +15,15 @@ public class IntakeCommand extends CommandBase {
     }
     @Override
     public void execute() {
-        m_intake.succ(-m_speed);
+        if(m_intake.getInches() > 15){
+            m_intake.succ(m_speed);
+        }
+        else{
+            m_intake.succ(m_speed);
+            Robot.wait(2000);
+            m_intake.succ(0);
+            m_intake.gotOne();
+        }
     }
     
 }

@@ -1,16 +1,23 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.RobotController;
+import edu.wpi.first.wpilibj.Ultrasonic;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import frc.robot.Robot;
 import frc.robot.Constants.IntakeConstants;
+import frc.robot.Constants.SonarConstants;
 
 public class IntakeSubsystem extends SubsystemBase {
     private  CANSparkMax m_intake = new CANSparkMax(IntakeConstants.kIntakePort, MotorType.kBrushed);
 
-    private SonarSubsystem m_sonar;
+    //private final Ultrasonic ultrasonic = new Ultrasonic(SonarConstants.sonar1, SonarConstants.sonar2);
+
+    private final AnalogInput ultrasonic = new AnalogInput(0);
+
     private static int count = 0;
     /**
      * this is the class for the intake
@@ -27,26 +34,32 @@ public class IntakeSubsystem extends SubsystemBase {
      * @throws InterruptedException
      */
     public void succ(double speed){
-        if(!pickedUp()){
             m_intake.set(speed);
-        }
-        else{
-            m_intake.set(speed);
-            Robot.wait(2000);
-            m_intake.set(0);
-            count++;
-        }
     }
-
-    public boolean pickedUp(){
-        //add code to notify that element picked up
-        return m_sonar.getInches() < 10;
-    }
+    
     public int getCount(){
         return count;
     }
 
+    public void gotOne(){
+        count++;
+    }
+
     public void shotOne(){
         count--;
+    }
+
+    
+
+    public double getInches(){
+        double voltage_scale_factor = 5/RobotController.getVoltage5V();
+        double rawValue = ultrasonic.getValue();
+        return rawValue * voltage_scale_factor * 0.0492;
+    }
+
+    public double getMM(){
+        double voltage_scale_factor = 5/RobotController.getVoltage5V();
+        double rawValue = ultrasonic.getValue();
+        return rawValue * voltage_scale_factor * 0.125;
     }
 }

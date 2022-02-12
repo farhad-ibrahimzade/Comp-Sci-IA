@@ -49,7 +49,7 @@ public class Constants {
     }
     public static final class IntakeConstants {
         public static final int kIntakePort = 4;
-        public static final double kIntakeSpeed = 0.5;
+        public static final double kIntakeSpeed = -0.5;
     }
 
     public static final class ShooterConstants {
@@ -60,7 +60,7 @@ public class Constants {
         public static final double kIndexClosedPosition = 0.5;
         public static final double kIndexOpenPosition = 0.35;
 
-        public static final double kIdealShotSpeed = 0.8; //ideal motor speed to run the shooter at
+        public static final double kIdealShotSpeed = -0.8; //ideal motor speed to run the shooter at
         public static final double kTimeToChargeUp = 4; //time in seconds for the shooter to reach ideal speed
 
         public static final double shooterSpeed = 100;

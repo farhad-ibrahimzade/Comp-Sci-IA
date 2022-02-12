@@ -110,8 +110,8 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     SmartDashboard.putNumber("NAVX Angle", m_robotContainer.navx.getAngle());
     //SmartDashboard.putNumber("Shooter Velocity", m_robotContainer.m_shooter.getVelocity());
-    SmartDashboard.putBoolean("Detect element?", m_robotContainer.m_camera.hasTarget());
-    SmartDashboard.putNumber("Detect element?", m_robotContainer.m_sonar.getInches());
+    SmartDashboard.putBoolean("Detect goal?", m_robotContainer.m_camera.hasTarget());
+    SmartDashboard.putNumber("Element in intake?", m_robotContainer.m_intake.getInches());
     SmartDashboard.putNumber("Element X", m_robotContainer.m_camera.getTX());
     SmartDashboard.putNumber("Element Y", m_robotContainer.m_camera.getTY());
   }

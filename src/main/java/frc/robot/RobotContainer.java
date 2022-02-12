@@ -30,8 +30,6 @@ import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.NAVXSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
-import frc.robot.subsystems.SonarSubsystem;
-
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -46,13 +44,12 @@ public class RobotContainer {
   
   //subsystems
   private final DriveSubsystem m_drive = new DriveSubsystem();
-  private final IntakeSubsystem m_intake = new IntakeSubsystem();
+  final IntakeSubsystem m_intake = new IntakeSubsystem();
   final ShooterSubsystem m_shooter = new ShooterSubsystem();
   final LimelightSubsystem m_camera = new LimelightSubsystem();
-  final SonarSubsystem m_sonar = new SonarSubsystem();
   final NAVXSubsystem navx = new NAVXSubsystem();
   //commands
-  private final FieldOrientedDrive m_FOD = new FieldOrientedDrive(m_drive, () -> m_joystick1.getRawAxis(JoystickConstants.kXStick2), () -> m_joystick1.getRawAxis(JoystickConstants.kYStick1), () -> m_joystick1.getRawAxis(JoystickConstants.kXStick1), () -> navx.getAngle());
+  private final FieldOrientedDrive m_FOD = new FieldOrientedDrive(m_drive, () -> m_joystick1.getRawAxis(JoystickConstants.kXStick1), () -> m_joystick1.getRawAxis(JoystickConstants.kYStick2), () -> m_joystick1.getRawAxis(JoystickConstants.kXStick2), () -> navx.getAngle());
   
   private final AlignToGoal m_alignToGoal = new AlignToGoal(m_drive, m_camera);
   private final IntakeCommand m_runIntake = new IntakeCommand(m_intake, IntakeConstants.kIntakeSpeed);

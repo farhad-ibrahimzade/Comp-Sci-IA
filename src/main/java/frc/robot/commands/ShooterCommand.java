@@ -22,7 +22,7 @@ public class ShooterCommand extends CommandBase{
     @Override
     public void execute() {
 
-        m_shooter.shoot(m_speed * m_camera.getShooterSpeed());
+        m_shooter.shoot(m_speed);
         //Robot.wait(3000);
         //m_shooter.speedUp();
         /*for(int i=0; i<=2; i++){
