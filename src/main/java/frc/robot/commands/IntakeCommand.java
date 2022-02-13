@@ -15,7 +15,7 @@ public class IntakeCommand extends CommandBase {
     }
     @Override
     public void execute() {
-        if(m_intake.getInches() > 15){
+        if(m_intake.getInches() > 12){
             m_intake.succ(m_speed);
         }
         else{

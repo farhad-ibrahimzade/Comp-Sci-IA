@@ -25,7 +25,6 @@ public class DriveSubsystem extends SubsystemBase {
   public static CANSparkMax m_frontRightMotor = new CANSparkMax(DriveConstants.kFrontRightWheelPort, MotorType.kBrushless);
   public static CANSparkMax m_backLeftMotor = new CANSparkMax(DriveConstants.kBackLeftWheelPort, MotorType.kBrushless);
   public static CANSparkMax m_backRightMotor = new CANSparkMax(DriveConstants.kBackRightWheelPort, MotorType.kBrushless);
-  
   private static RelativeEncoder m_frontLeftEncoder = m_frontLeftMotor.getEncoder();
   private static RelativeEncoder m_frontRightEncoder = m_frontRightMotor.getEncoder();
   private static RelativeEncoder m_backLeftEncoder = m_backLeftMotor.getEncoder();
@@ -45,7 +44,7 @@ public class DriveSubsystem extends SubsystemBase {
   
   private final MecanumDriveKinematics m_kinematics = DriveConstants.kDriveKinematics;
    // Odometry class for tracking robot pose
-   private final MecanumDriveOdometry m_odometry = new MecanumDriveOdometry(m_kinematics, navx.getRotation2d());
+  private final MecanumDriveOdometry m_odometry = new MecanumDriveOdometry(m_kinematics, navx.getRotation2d());
 
   private MecanumDrive m_drive = new MecanumDrive(m_frontLeftMotor, m_backLeftMotor, m_frontRightMotor, m_backRightMotor);
   /**
@@ -54,8 +53,10 @@ public class DriveSubsystem extends SubsystemBase {
   public DriveSubsystem() {
     
     m_drive.setSafetyEnabled(false);
-    m_backLeftMotor.setInverted(true);
-    m_backRightMotor.setInverted(true);
+    //m_frontLeftMotor.setInverted(false);
+    //m_frontRightMotor.setInverted(false);
+    //m_backLeftMotor.setInverted(true);
+    //m_backRightMotor.setInverted(true);
     m_frontLeftMotor.setIdleMode(IdleMode.kBrake);
     m_frontRightMotor.setIdleMode(IdleMode.kBrake);
     m_backLeftMotor.setIdleMode(IdleMode.kBrake);

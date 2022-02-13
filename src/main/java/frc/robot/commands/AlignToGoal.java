@@ -15,8 +15,8 @@ public class AlignToGoal extends CommandBase {
     }
     @Override
     public void execute() {
-        while(m_camera.getTX() != 0){
-            m_drive.mecanumDrive(0, 0, m_camera.getTurnSpeed());
+        while(!(m_camera.getTX() >= -0.5 && m_camera.getTX() <=0.5)){
+            m_drive.mecanumDrive(m_camera.getTurnSpeed(), 0 , 0);
         }
     }
     

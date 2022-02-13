@@ -16,13 +16,13 @@ public class IntakeSubsystem extends SubsystemBase {
 
     private final AnalogInput ultrasonic = new AnalogInput(0);
 
-    private static int count = 0;
+    private static int count;
     /**
      * this is the class for the intake
      * thats it its really simple
      */
     public IntakeSubsystem() {
-
+        count = 0;
     }
     
     /**
@@ -47,7 +47,9 @@ public class IntakeSubsystem extends SubsystemBase {
         count--;
     }
 
-    
+    public boolean inIntake(){
+        return getInches() < 12;
+    }
 
     public double getInches(){
         double voltage_scale_factor = 5/RobotController.getVoltage5V();
