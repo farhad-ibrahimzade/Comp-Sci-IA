@@ -53,10 +53,10 @@ public class DriveSubsystem extends SubsystemBase {
   public DriveSubsystem() {
     
     m_drive.setSafetyEnabled(false);
-    //m_frontLeftMotor.setInverted(false);
-    //m_frontRightMotor.setInverted(false);
-    //m_backLeftMotor.setInverted(true);
-    //m_backRightMotor.setInverted(true);
+    m_frontLeftMotor.setInverted(false);
+    m_frontRightMotor.setInverted(true);
+    m_backLeftMotor.setInverted(false);
+    m_backRightMotor.setInverted(true);
     m_frontLeftMotor.setIdleMode(IdleMode.kBrake);
     m_frontRightMotor.setIdleMode(IdleMode.kBrake);
     m_backLeftMotor.setIdleMode(IdleMode.kBrake);

@@ -47,6 +47,7 @@ public class Robot extends TimedRobot {
 
     // Push the trajectory to Field2d.
     m_field.getObject("traj").setTrajectory(Trajectories.exampleTrajectory);
+    m_field.getObject("traj2").setTrajectory(Trajectories.anotherTrajectory);
 
   }
 

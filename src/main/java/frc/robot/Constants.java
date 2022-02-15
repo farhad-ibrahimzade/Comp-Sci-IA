@@ -15,16 +15,16 @@ public class Constants {
         public static final int kBackRightWheelPort = 5;
 
         //drivetrain stuff
-        public static double speed = 1; //speed control 
+        public static double speed = 0.5; //speed control 
 
         //PID stuff
         public static double kP = 0.001;
         public static double kI = 0;
         public static double kD = 0;
 
-        public static double ks = 0.174;
-        public static double kv = 2.64;
-        public static double ka = 0.0997;
+        public static double ks = 0.085914;
+        public static double kv = 0.062525;
+        public static double ka = 0.019042;
         public static final double kTrackWidth = 0.53; //20.5 - 21 in
         // Distance between centers of right and left wheels on robot
         public static final double kWheelBase = 0.52; //20.25-20.5 in
@@ -41,10 +41,10 @@ public class Constants {
         new SimpleMotorFeedforward(ks, kv, ka);
 
         // Example value only - as above, this must be tuned for your drive!
-        public static final double kPFrontLeftVel = 0.5;
-        public static final double kPRearLeftVel = 0.5;
-        public static final double kPFrontRightVel = 0.5;
-        public static final double kPRearRightVel = 0.5;
+        public static final double kPFrontLeftVel = 0.01;
+        public static final double kPRearLeftVel = 0.01;
+        public static final double kPFrontRightVel = 0.01;
+        public static final double kPRearRightVel = 0.01;
         
     }
     public static final class IntakeConstants {
@@ -105,10 +105,10 @@ public class Constants {
         public static final double kAutoShootEndTime = 5;
 
         
-        public static final double kMaxSpeedMetersPerSecond = 3;
-        public static final double kMaxAccelerationMetersPerSecondSquared = 3;
+        public static final double kMaxSpeedMetersPerSecond = 1;
+        public static final double kMaxAccelerationMetersPerSecondSquared = 0.1;
         public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
-        public static final double kMaxAngularSpeedRadiansPerSecondSquared = Math.PI;
+        public static final double kMaxAngularSpeedRadiansPerSecondSquared = Math.PI/3;
     
         public static final double kPXController = 0.5;
         public static final double kPYController = 0.5;
