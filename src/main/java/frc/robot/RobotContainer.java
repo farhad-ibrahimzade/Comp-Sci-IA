@@ -47,7 +47,10 @@ public class RobotContainer {
   final ShooterSubsystem m_shooter = new ShooterSubsystem();
   final LimelightSubsystem m_camera = new LimelightSubsystem();
   //commands
-  private final FieldOrientedDrive m_FOD = new FieldOrientedDrive(m_drive, () -> m_joystick1.getRawAxis(JoystickConstants.kYStick2), () -> m_joystick1.getRawAxis(JoystickConstants.kXStick1), () -> m_joystick1.getRawAxis(JoystickConstants.kXStick2), () -> m_drive.getHeading());
+  private final FieldOrientedDrive m_FOD = new FieldOrientedDrive(m_drive, () -> m_joystick1.getRawAxis(JoystickConstants.kYStick2),
+   () -> m_joystick1.getRawAxis(JoystickConstants.kXStick1),
+    () -> m_joystick1.getRawAxis(JoystickConstants.kXStick2),
+     () -> m_drive.getHeading());
   
   private final AlignToGoal m_alignToGoal = new AlignToGoal(m_drive, m_camera);
   private final IntakeCommand m_runIntake = new IntakeCommand(m_intake, IntakeConstants.kIntakeSpeed);

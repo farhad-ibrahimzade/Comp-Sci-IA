@@ -110,7 +110,10 @@ public class DriveSubsystem extends SubsystemBase {
    * @return The current wheel speeds.
    */
   public MecanumDriveWheelSpeeds getCurrentWheelSpeeds() {
-    return new MecanumDriveWheelSpeeds(m_frontLeftEncoder.getVelocity(), m_frontRightEncoder.getVelocity(), m_backLeftEncoder.getVelocity(), m_backRightEncoder.getVelocity());
+    return new MecanumDriveWheelSpeeds(m_frontLeftEncoder.getVelocity(),
+      m_frontRightEncoder.getVelocity(),
+      m_backLeftEncoder.getVelocity(),
+      m_backRightEncoder.getVelocity());
   }
 
   /**

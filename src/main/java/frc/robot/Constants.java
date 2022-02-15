@@ -1,5 +1,7 @@
 package frc.robot;
 
+import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.MecanumDriveKinematics;
@@ -17,11 +19,6 @@ public class Constants {
         //drivetrain stuff
         public static double speed = 0.5; //speed control 
 
-        //PID stuff
-        public static double kP = 0.001;
-        public static double kI = 0;
-        public static double kD = 0;
-
         public static double ks = 0.085914;
         public static double kv = 0.062525;
         public static double ka = 0.019042;
@@ -29,6 +26,18 @@ public class Constants {
         // Distance between centers of right and left wheels on robot
         public static final double kWheelBase = 0.52; //20.25-20.5 in
         // Distance between centers of front and back wheels on robot
+        
+        // Example value only - as above, this must be tuned for your drive!
+        public static final double kPDriveVel = 0.01;
+
+        public static final double kMaxSpeedMetersPerSecond = 1;
+        public static final double kMaxAccelerationMetersPerSecondSquared = 0.1;
+        public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
+        public static final double kMaxAngularSpeedRadiansPerSecondSquared = Math.PI/3;
+    
+        public static final double kPXController = 0.5;
+        public static final double kPYController = 0.5;
+        public static final double kPThetaController = 0.5;
 
         public static final MecanumDriveKinematics kDriveKinematics =
         new MecanumDriveKinematics(
@@ -40,12 +49,20 @@ public class Constants {
         public static final SimpleMotorFeedforward kFeedforward =
         new SimpleMotorFeedforward(ks, kv, ka);
 
-        // Example value only - as above, this must be tuned for your drive!
-        public static final double kPFrontLeftVel = 0.01;
-        public static final double kPRearLeftVel = 0.01;
-        public static final double kPFrontRightVel = 0.01;
-        public static final double kPRearRightVel = 0.01;
+        public static final PIDController driveController = new PIDController(kPDriveVel, 0, 0);
         
+         // Constraint for the motion profilied robot angle controller
+         public static final TrapezoidProfile.Constraints kThetaControllerConstraints =
+         new TrapezoidProfile.Constraints(
+             kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
+
+        public static final PIDController xController = new PIDController(kPXController, 0, 0);
+
+        public static final PIDController yController = new PIDController(kPYController, 0, 0);
+
+        public static final ProfiledPIDController thetaController
+         = new ProfiledPIDController(kPThetaController, 0, 0, kThetaControllerConstraints);
+    
     }
     public static final class IntakeConstants {
         public static final int kIntakePort = 4;
@@ -104,20 +121,6 @@ public class Constants {
         public static final double kAutoChargeUpTime = 2;
         public static final double kAutoShootEndTime = 5;
 
-        
-        public static final double kMaxSpeedMetersPerSecond = 1;
-        public static final double kMaxAccelerationMetersPerSecondSquared = 0.1;
-        public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
-        public static final double kMaxAngularSpeedRadiansPerSecondSquared = Math.PI/3;
-    
-        public static final double kPXController = 0.5;
-        public static final double kPYController = 0.5;
-        public static final double kPThetaController = 0.5;
-    
-        // Constraint for the motion profilied robot angle controller
-        public static final TrapezoidProfile.Constraints kThetaControllerConstraints =
-            new TrapezoidProfile.Constraints(
-                kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
       }
 
     

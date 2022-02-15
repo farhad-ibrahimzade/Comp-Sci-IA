@@ -1,12 +1,9 @@
 package frc.robot.commands;
 
 
-import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.MecanumControllerCommand;
 import frc.robot.Trajectories;
-import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.subsystems.DriveSubsystem;
 
@@ -19,21 +16,17 @@ public class TrajectoryCommand extends CommandBase {
             m_robotDrive::getPose,
             DriveConstants.kFeedforward,
             DriveConstants.kDriveKinematics,
-
             // Position contollers
-            new PIDController(AutoConstants.kPXController, 0, 0),
-            new PIDController(AutoConstants.kPYController, 0, 0),
-            new ProfiledPIDController(
-                AutoConstants.kPThetaController, 0, 0, AutoConstants.kThetaControllerConstraints),
-
+            DriveConstants.xController,
+            DriveConstants.yController,
+            DriveConstants.thetaController,
             // Needed for normalizing wheel speeds
-            AutoConstants.kMaxSpeedMetersPerSecond,
-
+            DriveConstants.kMaxSpeedMetersPerSecond,
             // Velocity PID's
-            new PIDController(DriveConstants.kPFrontLeftVel, 0, 0),
-            new PIDController(DriveConstants.kPRearLeftVel, 0, 0),
-            new PIDController(DriveConstants.kPFrontRightVel, 0, 0),
-            new PIDController(DriveConstants.kPRearRightVel, 0, 0),
+            DriveConstants.driveController,
+            DriveConstants.driveController,
+            DriveConstants.driveController,
+            DriveConstants.driveController,
             m_robotDrive::getCurrentWheelSpeeds,
             m_robotDrive::setDriveMotorControllersVolts, // Consumer for the output motor voltages
             m_robotDrive);
