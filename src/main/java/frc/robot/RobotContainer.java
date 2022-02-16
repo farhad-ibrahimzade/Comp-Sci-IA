@@ -26,7 +26,7 @@ import frc.robot.commands.AlignToGoal;
 import frc.robot.commands.FieldOrientedDrive;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShooterCommand;
-import frc.robot.commands.TrajectoryCommand;
+import frc.robot.commands.SpeedControl;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
@@ -59,6 +59,9 @@ public class RobotContainer {
   private final IntakeCommand m_stopIntake = new IntakeCommand(m_intake, 0);
   private final ShooterCommand m_runShooter = new ShooterCommand(m_shooter, m_intake, m_camera, ShooterConstants.kIdealShotSpeed);
   private final ShooterCommand m_stopShooter = new ShooterCommand(m_shooter, m_intake, m_camera, 0);
+  private final SpeedControl m_slowMode = new SpeedControl(0.5);
+  private final SpeedControl m_fastMode = new SpeedControl(1);
+
   //chooser
   private SendableChooser<Command> autonomousChooser = new SendableChooser<Command>();
   private SendableChooser<Command> driveChooser = new SendableChooser<Command>();
@@ -75,7 +78,7 @@ public class RobotContainer {
    */
   public RobotContainer() {
     //sets up our auto chooser(see the classes for details)
-    autonomousChooser.setDefaultOption("Trajectory", new TrajectoryCommand());
+    //autonomousChooser.setDefaultOption("Trajectory", );
     //autonomousChooser.addOption("Shoot Left Of Target", a_autoDriveToLineAndShootLeft);
     //sets up drive chooser with the option between FOD and default
     driveChooser.setDefaultOption("Field Oriented Drive", m_FOD);
@@ -114,6 +117,10 @@ public class RobotContainer {
     
     new JoystickButton(m_joystick1, 4)
       .whenPressed(m_alignToGoal); 
+
+    new JoystickButton(m_joystick1, 6)
+      .whenPressed(m_fastMode)
+      .whenReleased(m_slowMode);
     
   }
 
