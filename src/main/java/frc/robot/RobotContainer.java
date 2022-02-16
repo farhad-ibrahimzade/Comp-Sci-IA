@@ -16,7 +16,9 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.MecanumControllerCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.JoystickConstants;
 import frc.robot.Constants.ShooterConstants;
@@ -121,7 +123,27 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
+    MecanumControllerCommand mecanumControllerCommand =
+        new MecanumControllerCommand(
+            Trajectories.exampleTrajectory,
+            m_drive::getPose,
+            DriveConstants.kFeedforward,
+            DriveConstants.kDriveKinematics,
+            // Position contollers
+            DriveConstants.xController,
+            DriveConstants.yController,
+            DriveConstants.thetaController,
+            // Needed for normalizing wheel speeds
+            DriveConstants.kMaxSpeedMetersPerSecond,
+            // Velocity PID's
+            DriveConstants.driveController,
+            DriveConstants.driveController,
+            DriveConstants.driveController,
+            DriveConstants.driveController,
+            m_drive::getCurrentWheelSpeeds,
+            m_drive::setDriveMotorControllersVolts, // Consumer for the output motor voltages
+            m_drive);
     // An ExampleCommand will run in autonomous
-    return autonomousChooser.getSelected();
+    return mecanumControllerCommand.andThen(() -> m_drive.mecanumDrive(0, 0, 0));
   }
 }

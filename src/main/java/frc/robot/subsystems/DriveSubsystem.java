@@ -65,6 +65,19 @@ public class DriveSubsystem extends SubsystemBase {
     SmartDashboard.putData("Field", m_field);
   }
 
+  public void motorBrake(){
+    m_frontLeftMotor.setIdleMode(IdleMode.kBrake);
+    m_frontRightMotor.setIdleMode(IdleMode.kBrake);
+    m_backLeftMotor.setIdleMode(IdleMode.kBrake);
+    m_backRightMotor.setIdleMode(IdleMode.kBrake);
+  }
+
+  public void motorCoast(){
+    m_frontLeftMotor.setIdleMode(IdleMode.kCoast);
+    m_frontRightMotor.setIdleMode(IdleMode.kCoast);
+    m_backLeftMotor.setIdleMode(IdleMode.kCoast);
+    m_backRightMotor.setIdleMode(IdleMode.kCoast);
+  }
   /**
    * Drives the robot using base mecanum (y stick 1 = forward, x stick 1 = sideways, x stick 2 = rotation)
    *

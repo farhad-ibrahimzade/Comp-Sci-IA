@@ -24,7 +24,7 @@ public class Trajectories {
             // Pass through these two interior waypoints, making an 's' curve path
             List.of(new Translation2d(2, 1)),
             // End 3 meters straight ahead of where we started, facing forward
-            new Pose2d(5, 2, new Rotation2d(0)), config);
+            new Pose2d(15, 2, new Rotation2d(0)), config);
 
     public static Trajectory anotherTrajectory =
         TrajectoryGenerator.generateTrajectory(

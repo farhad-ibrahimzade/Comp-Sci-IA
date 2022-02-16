@@ -42,6 +42,7 @@ public class Robot extends TimedRobot {
     CameraServer.startAutomaticCapture();
     m_robotContainer = new RobotContainer();
     m_robotContainer.m_drive.resetNavx();
+    m_robotContainer.m_drive.motorBrake();
     Field2d m_field = new Field2d();
     SmartDashboard.putData(m_field);
 
@@ -72,6 +73,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
+    m_robotContainer.m_drive.motorCoast();
   }
 
   @Override
@@ -83,8 +85,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
+    
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-
+    m_robotContainer.m_drive.motorBrake();
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
@@ -104,7 +107,7 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    
+    m_robotContainer.m_drive.motorBrake();
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
