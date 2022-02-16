@@ -5,9 +5,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.LimelightConstants;
 
 public class LimelightSubsystem extends SubsystemBase {
-    // These numbers must be tuned for your Robot! Be careful!
-    
-
+  
     public LimelightSubsystem() {
 
     }

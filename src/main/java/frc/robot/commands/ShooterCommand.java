@@ -23,18 +23,7 @@ public class ShooterCommand extends CommandBase{
     public void execute() {
 
         m_shooter.shoot(m_speed * m_camera.getShooterSpeed());
-        //Robot.wait(3000);
-        //m_shooter.speedUp();
-        /*for(int i=0; i<=2; i++){
-
-            m_shooter.moveIndex(1);
-            Robot.wait(1000);
-            m_shooter.moveIndex(0);
-            Robot.wait(1000);
-            m_intake.shotOne();
-        }
-        m_shooter.shoot(0);*/
-        //m_shooter.speedUp();
+        
     }
     
 }

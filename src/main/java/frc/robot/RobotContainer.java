@@ -51,8 +51,7 @@ public class RobotContainer {
   //commands
   private final FieldOrientedDrive m_FOD = new FieldOrientedDrive(m_drive, () -> m_joystick1.getRawAxis(JoystickConstants.kYStick2),
    () -> m_joystick1.getRawAxis(JoystickConstants.kXStick1),
-    () -> m_joystick1.getRawAxis(JoystickConstants.kXStick2),
-     () -> m_drive.getHeading());
+    () -> m_joystick1.getRawAxis(JoystickConstants.kXStick2));
   
   private final AlignToGoal m_alignToGoal = new AlignToGoal(m_drive, m_camera);
   private final IntakeCommand m_runIntake = new IntakeCommand(m_intake, IntakeConstants.kIntakeSpeed);
@@ -118,8 +117,8 @@ public class RobotContainer {
     new JoystickButton(m_joystick1, 4)
       .whenPressed(m_alignToGoal); 
 
-    new JoystickButton(m_joystick1, 6)
-      .whenPressed(m_fastMode)
+    new JoystickButton(m_joystick1, 5)
+      .whileHeld(m_fastMode)
       .whenReleased(m_slowMode);
     
   }

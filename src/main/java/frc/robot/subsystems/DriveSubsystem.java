@@ -29,19 +29,11 @@ public class DriveSubsystem extends SubsystemBase {
   private static RelativeEncoder m_frontRightEncoder = m_frontRightMotor.getEncoder();
   private static RelativeEncoder m_backLeftEncoder = m_backLeftMotor.getEncoder();
   private static RelativeEncoder m_backRightEncoder = m_backRightMotor.getEncoder();
-    
-  //private static PIDController xController = new PIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD);
-  //private static PIDController yController = new PIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD);
-
-  //private static Constraints constraints = new Constraints(Constants.maxVelo,Constants.maxAccel);
-  //private static ProfiledPIDController tController = new ProfiledPIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD, constraints);
-
+ 
   private AHRS navx = new AHRS(SerialPort.Port.kMXP);
 
   private final Field2d m_field = new Field2d();
 
-  //private static SimpleMotorFeedforward feedForward = DriveConstants.kFeedforward;
-  
   private final MecanumDriveKinematics m_kinematics = DriveConstants.kDriveKinematics;
    // Odometry class for tracking robot pose
   private final MecanumDriveOdometry m_odometry = new MecanumDriveOdometry(m_kinematics, navx.getRotation2d());

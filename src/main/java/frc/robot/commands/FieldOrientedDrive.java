@@ -18,16 +18,14 @@ public class FieldOrientedDrive extends CommandBase {
     private final DoubleSupplier m_x;
     private final DoubleSupplier m_y;
     private final DoubleSupplier m_c;
-    private final DoubleSupplier m_theta;
     
 
-    public FieldOrientedDrive(DriveSubsystem subsystem, DoubleSupplier x, DoubleSupplier y, DoubleSupplier c, DoubleSupplier theta)
+    public FieldOrientedDrive(DriveSubsystem subsystem, DoubleSupplier x, DoubleSupplier y, DoubleSupplier c)
     {
         m_drive = subsystem;
         m_x = x;
         m_y = y;
         m_c = c;
-        m_theta = theta;
         addRequirements(m_drive);
     }
     @Override

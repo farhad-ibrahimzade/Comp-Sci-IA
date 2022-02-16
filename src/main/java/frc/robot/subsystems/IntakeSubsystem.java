@@ -12,8 +12,6 @@ import frc.robot.Constants.IntakeConstants;
 public class IntakeSubsystem extends SubsystemBase {
     private  CANSparkMax m_intake = new CANSparkMax(IntakeConstants.kIntakePort, MotorType.kBrushed);
 
-    //private final Ultrasonic ultrasonic = new Ultrasonic(SonarConstants.sonar1, SonarConstants.sonar2);
-
     private final AnalogInput ultrasonic = new AnalogInput(0);
 
     private static int count;
